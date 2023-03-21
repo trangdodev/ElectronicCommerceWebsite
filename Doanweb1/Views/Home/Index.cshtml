@@ -1,0 +1,593 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var controller = ViewContext.RouteData.Values["controller"].ToString();
+    var action = ViewContext.RouteData.Values["action"].ToString();
+    var isActiveController = new Func<string, string, string, string, string>((ctrl, act, activeStyle, inactiveStyle) => controller == ctrl && action == act ? activeStyle : inactiveStyle);
+}
+
+<body>
+    <!-- Main Slider Start -->
+    <div class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <nav class="navbar bg-light">
+                        <ul class="navbar-nav">
+                            <li style="text-align:center"><h2>Danh mục</h2></li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index", "Home")" class="@isActiveController("Home", "Index", "current","")"><i class="fa fa-home"></i>Trang chủ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index", "Home")" class="@isActiveController("Home", "Index", "current","")"><i class="fa fa-laptop"></i>Laptop</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index", "Home")" class="@isActiveController("Home", "Index", "current","")"><i class="fa fa-keyboard"></i>Bàn phím</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index", "Home")" class="@isActiveController("Home", "Index", "current","")"><i class="fa fa-mouse-pointer"></i>Chuột</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index", "Home")" class="@isActiveController("Home", "Index", "current","")"><i class="fa fa-headphones"></i>Tai nghe</a>
+                            </li
+                        </ul>
+                    </nav>
+                </div>
+
+                <!--Quảng cáo-->
+                <div class="col-md-6">
+                    <div class="header-slider normal-slider">
+                       <img src="~/Content/Template/img/slideshow1.png" alt="Slider Image" />
+                       <img src="~/Content/Template/img/slideshow2.png" alt="Slider Image" />
+                       <img src="~/Content/Template/img/slideshow3.png" alt="Slider Image" />
+                       <img src="~/Content/Template/img/slideshow4.png" alt="Slider Image" />
+                       <img src="~/Content/Template/img/slideshow5.png" alt="Slider Image" />
+                    </div>
+                </div>
+
+                <div class="col-md-3"
+                    <div class="header-img">
+                        <div class="img-item">
+                            <img src="~/Content/Template/img/uudai3.png" />
+                            <a class="img-text" href="">
+                                <p style="color: #000000">Chi tiết sản phẩm</p>
+                            </a>
+                        </div>
+                        <div class="img-item">
+                            <img src="~/Content/Template/img/uudai4.jpg" />
+                            <a class="img-text" href="">
+                                <p style="color: #000000">Chi tiết sản phẩm</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main Slider End -->
+    <!-- Brand Start -->
+    <div class="brand">
+        <div class="container-fluid">
+            <div class="brand-slider">
+                <div class="brand-item"><img src="~/Content/Template/img/logo.apple.png" alt=""></div>
+                <div class="brand-item"><img src="~/Content/Template/img/logo.acer.png" alt=""></div>
+                <div class="brand-item"><img src="~/Content/Template/img/logo.gyga.png" alt=""></div>
+                <div class="brand-item"><img src="~/Content/Template/img/logo.rog.png" alt=""></div>
+                <div class="brand-item"><img src="~/Content/Template/img/logo.tuf.png" alt=""></div>
+                <div class="brand-item"><img src="~/Content/Template/img/logo.msi.png" alt=""></div>
+                <div class="brand-item"><img src="~/Content/Template/img/logo.dareu.png" alt=""></div>
+                <div class="brand-item"><img src="~/Content/Template/img/logo.akko.png" alt=""></div>
+                <div class="brand-item"><img src="~/Content/Template/img/logo.corsair.png" alt=""></div>
+                <div class="brand-item"><img src="~/Content/Template/img/logo.logitech.png" alt=""></div>
+                <div class="brand-item"><img src="~/Content/Template/img/logo.razer.png" alt=""></div>
+            </div>
+        </div>
+    </div>
+    <!-- Brand End -->
+    <!-- Feature Start-->
+    <div class="feature">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-lg-3 col-md-6 feature-col">
+                    <div class="feature-content">
+                        <i class="fab fa-cc-mastercard"></i>
+                        <h2>Thanh toán an toàn</h2>
+                        <p>
+                            Chấp nhận thanh toán quốc tế.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 feature-col">
+                    <div class="feature-content">
+                        <i class="fa fa-truck"></i>
+                        <h2>Giao hàng toàn quốc</h2>
+                        <p>
+                            Nhanh chóng - An toàn - Tiết kiệm.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 feature-col">
+                    <div class="feature-content">
+                        <i class="fa fa-sync-alt"></i>
+                        <h2>Bảo hành 12 tháng</h2>
+                        <p>
+                            Nhận đổi trả trong vòng 7 ngày
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 feature-col">
+                    <div class="feature-content">
+                        <i class="fa fa-comments"></i>
+                        <h2>Hỗ trợ 24/7</h2>
+                        <p>
+                            Nhiệt tình - Chu đáo - Tận tâm.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Feature End-->
+    <!-- Category Start-->
+    <div class="category">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="category-item ch-400">
+                        <img src="~/Content/Template/img/category-3.jpg" />
+                        <a class="category-name" href="">
+                            <p>Some text goes here that describes the image</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="category-item ch-250">
+                        <img src="~/Content/Template/img/category-4.jpg" />
+                        <a class="category-name" href="">
+                            <p>Some text goes here that describes the image</p>
+                        </a>
+                    </div>
+                    <div class="category-item ch-150">
+                        <img src="~/Content/Template/img/category-5.jpg" />
+                        <a class="category-name" href="">
+                            <p>Some text goes here that describes the image</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="category-item ch-150">
+                        <img src="~/Content/Template/img/category-6.jpg" />
+                        <a class="category-name" href="">
+                            <p>Some text goes here that describes the image</p>
+                        </a>
+                    </div>
+                    <div class="category-item ch-250">
+                        <img src="~/Content/Template/img/category-7.jpg" />
+                        <a class="category-name" href="">
+                            <p>Some text goes here that describes the image</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="category-item ch-400">
+                        <img src="~/Content/Template/img/category-8.jpg" />
+                        <a class="category-name" href="">
+                            <p>Some text goes here that describes the image</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Category End-->
+    <!-- Call to Action Start -->
+    <!--<div class="call-to-action">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1>call us for any queries</h1>
+                </div>
+                <div class="col-md-6">
+                    <a href="tel:0364735020">+84-36-473-5020</a>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!-- Call to Action End -->
+    <!-- Featured Product Start -->
+    <div class="featured-product product">
+        <div class="container-fluid">
+            <div class="section-header">
+                <h1>Featured Product</h1>
+            </div>
+            <div class="row align-items-center product-slider product-slider-4">
+                <div class="col-lg-3">
+                    <div class="product-item">
+                        <div class="product-title">
+                            <a href="#"></a>
+                            <div class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="product-image">
+                            <a href="product-detail.html">
+                                <img src="~/Content/Template/img/Lap1.jpg" alt="Product Image">
+                            </a>
+                            <div class="product-action">
+                                <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                <a href="#"><i class="fa fa-heart"></i></a>
+                                <a href="#"><i class="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <h3><span>$</span>99</h3>
+                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product-item">
+                        <div class="product-title">
+                            <a href="#">Product Name</a>
+                            <div class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="product-image">
+                            <a href="~/Content/Template/product-detail.html">
+                                <img src="~/Content/Template/img/Lap1.jpg" alt="Product Image">
+                            </a>
+                            <div class="product-action">
+                                <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                <a href="#"><i class="fa fa-heart"></i></a>
+                                <a href="#"><i class="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <h3><span>$</span>99</h3>
+                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product-item">
+                        <div class="product-title">
+                            <a href="#">Product Name</a>
+                            <div class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="product-image">
+                            <a href="product-detail.html">
+                                <img src="~/Content/Template/img/Lap3.jpg" alt="Product Image">
+                            </a>
+                            <div class="product-action">
+                                <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                <a href="#"><i class="fa fa-heart"></i></a>
+                                <a href="#"><i class="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <h3><span>$</span>99</h3>
+                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product-item">
+                        <div class="product-title">
+                            <a href="#">Product Name</a>
+                            <div class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="product-image">
+                            <a href="product-detail.html">
+                                <img src="~/Content/Template/img/Lap4.jpg" alt="Product Image">
+                            </a>
+                            <div class="product-action">
+                                <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                <a href="#"><i class="fa fa-heart"></i></a>
+                                <a href="#"><i class="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <h3><span>$</span>99</h3>
+                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product-item">
+                        <div class="product-title">
+                            <a href="#">Product Name</a>
+                            <div class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="product-image">
+                            <a href="product-detail.html">
+                                <img src="~/Content/Template/img/product-5.jpg" alt="Product Image">
+                            </a>
+                            <div class="product-action">
+                                <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                <a href="#"><i class="fa fa-heart"></i></a>
+                                <a href="#"><i class="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <h3><span>$</span>99</h3>
+                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Featured Product End -->
+    <!-- Newsletter Start -->
+    <div class="newsletter">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Subscribe Our Newsletter</h1>
+                </div>
+                <div class="col-md-6">
+                    <div class="form">
+                        <input type="email" placeholder="Your email here">
+                        <button>Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Newsletter End -->
+    <!-- Recent Product Start -->
+    <div class="recent-product product">
+        <div class="container-fluid">
+            <div class="section-header">
+                <h1>Recent Product</h1>
+            </div>
+            <div class="row align-items-center product-slider product-slider-4">
+                <div class="col-lg-3">
+                    <div class="product-item">
+                        <div class="product-title">
+                            <a href="#">Product Name</a>
+                            <div class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="product-image">
+                            <a href="product-detail.html">
+                                <img src="~/Content/Template/img/product-6.jpg" alt="Product Image">
+                            </a>
+                            <div class="product-action">
+                                <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                <a href="#"><i class="fa fa-heart"></i></a>
+                                <a href="#"><i class="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <h3><span>$</span>99</h3>
+                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product-item">
+                        <div class="product-title">
+                            <a href="#">Product Name</a>
+                            <div class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="product-image">
+                            <a href="product-detail.html">
+                                <img src="img/product-7.jpg" alt="Product Image">
+                            </a>
+                            <div class="product-action">
+                                <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                <a href="#"><i class="fa fa-heart"></i></a>
+                                <a href="#"><i class="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <h3><span>$</span>99</h3>
+                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product-item">
+                        <div class="product-title">
+                            <a href="#">Product Name</a>
+                            <div class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="product-image">
+                            <a href="product-detail.html">
+                                <img src="img/product-8.jpg" alt="Product Image">
+                            </a>
+                            <div class="product-action">
+                                <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                <a href="#"><i class="fa fa-heart"></i></a>
+                                <a href="#"><i class="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <h3><span>$</span>99</h3>
+                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product-item">
+                        <div class="product-title">
+                            <a href="#">Product Name</a>
+                            <div class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="product-image">
+                            <a href="product-detail.html">
+                                <img src="img/product-9.jpg" alt="Product Image">
+                            </a>
+                            <div class="product-action">
+                                <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                <a href="#"><i class="fa fa-heart"></i></a>
+                                <a href="#"><i class="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <h3><span>$</span>99</h3>
+                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product-item">
+                        <div class="product-title">
+                            <a href="#">Product Name</a>
+                            <div class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="product-image">
+                            <a href="product-detail.html">
+                                <img src="img/product-10.jpg" alt="Product Image">
+                            </a>
+                            <div class="product-action">
+                                <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                <a href="#"><i class="fa fa-heart"></i></a>
+                                <a href="#"><i class="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <h3><span>$</span>99</h3>
+                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Recent Product End -->
+    <!-- Review Start -->
+    <div class="review">
+        <div class="container-fluid">
+            <div class="row align-items-center review-slider normal-slider">
+                <div class="col-md-6">
+                    <div class="review-slider-item">
+                        <div class="review-img">
+                            <img src="~/Content/Template/img/review-1.jpg" alt="Image">
+                        </div>
+                        <div class="review-text">
+                            <h2>Customer Name</h2>
+                            <h3>Profession</h3>
+                            <div class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae nunc eget leo finibus luctus et vitae lorem
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="review-slider-item">
+                        <div class="review-img">
+                            <img src="~/Content/Template/img/review-2.jpg" alt="Image">
+                        </div>
+                        <div class="review-text">
+                            <h2>Customer Name</h2>
+                            <h3>Profession</h3>
+                            <div class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae nunc eget leo finibus luctus et vitae lorem
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="review-slider-item">
+                        <div class="review-img">
+                            <img src="~/Content/Template/img/review-3.jpg" alt="Image">
+                        </div>
+                        <div class="review-text">
+                            <h2>Customer Name</h2>
+                            <h3>Profession</h3>
+                            <div class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae nunc eget leo finibus luctus et vitae lorem
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Review End -->
+</body>
+
+
