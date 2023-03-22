@@ -1,16 +1,19 @@
-﻿@{
-    var controller = ViewContext.RouteData.Values["controller"].ToString();
-    var action = ViewContext.RouteData.Values["action"].ToString();
-    var isActiveController = new Func<string, string, string, string, string>((ctrl, act, activeStyle, inactiveStyle) => controller == ctrl && action == act ? activeStyle : inactiveStyle);
+﻿
+@{
+    
 }
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TG STORE</title>
-    @Styles.Render("/Content/Site.css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta charset="utf-8">
+    <title>E Store - eCommerce HTML Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="eCommerce HTML Template Free Download" name="keywords">
+    <meta content="eCommerce HTML Template Free Download" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
@@ -18,30 +21,29 @@
     <!-- CSS Libraries -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="~/Content/Template/lib/slick/slick.css" rel="stylesheet">
-    <link href="~/Content/Template/lib/slick/slick-theme.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/Template/lib/slick/slick.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/Template/lib/slick/slick-theme.css")" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="@Url.Content("~/Content/Template/css/style.css")" rel="stylesheet" type="text/css" />
-
+    <link href="@Url.Content("~/Content/Template/css/style.css")" rel="stylesheet">
 </head>
 
 <body>
     <!-- Top bar Start -->
-    <!--<div class="top-bar">
+    <div class="top-bar">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
                     <i class="fa fa-envelope"></i>
-                    truonggiangcontact53@gmail.com
+                    support@email.com
                 </div>
                 <div class="col-sm-6">
                     <i class="fa fa-phone-alt"></i>
-                    +84-36-473-5020
+                    +012-345-6789
                 </div>
             </div>
         </div>
-    </div>-->
+    </div>
     <!-- Top bar End -->
     <!-- Nav Bar Start -->
     <div class="nav">
@@ -54,29 +56,27 @@
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
-                        <a href="@Url.Action("Index", "Home")" class="nav-item nav-link @isActiveController("Home","Index","current","")">Home</a>
-                        <a href="@Url.Action("Index", "Product")" class="nav-item nav-link @isActiveController("Home","Index","current","")">San pham</a>
-                        @*<a href="~/Content/Template/product-detail.html" class="nav-item nav-link">Product Detail</a>*@
-                        <a href="~/Content/Template/cart.html" class="nav-item nav-link">Cart</a>
-                        <a href="~/Content/Template/checkout.html" class="nav-item nav-link">Checkout</a>
-                        <a href="~/Content/Template/my-account.html" class="nav-item nav-link">My Account</a>
+                        <a href="index.html" class="nav-item nav-link">Home</a>
+                        <a href="product-list.html" class="nav-item nav-link active">Products</a>
+                        <a href="product-detail.html" class="nav-item nav-link">Product Detail</a>
+                        <a href="cart.html" class="nav-item nav-link">Cart</a>
+                        <a href="checkout.html" class="nav-item nav-link">Checkout</a>
+                        <a href="my-account.html" class="nav-item nav-link">My Account</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
                             <div class="dropdown-menu">
-                                <a href="~/Content/Template/wishlist.html" class="dropdown-item">Wishlist</a>
-                                <a href="~/Views/Account/Login.cshtml" class="dropdown-item">Login & Register</a>
-                                <a href="~/Content/Template/contact.html" class="dropdown-item">Contact Us</a>
+                                <a href="wishlist.html" class="dropdown-item">Wishlist</a>
+                                <a href="login.html" class="dropdown-item">Login & Register</a>
+                                <a href="contact.html" class="dropdown-item">Contact Us</a>
                             </div>
                         </div>
                     </div>
                     <div class="navbar-nav ml-auto">
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Tài khoản</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
                             <div class="dropdown-menu">
-                                <div class="nav-link">
-                                    <a href="@Url.Action("Login", "Account")" class="@isActiveController("Account", "Login", "curent","")" class="dropdown-item">Đăng nhập</a>
-                                    <a href="@Url.Action("Register", "Account")" class="@isActiveController("Account", "Register", "curent","")" class="dropdown-item">Đăng ký</a>
-                                </div>
+                                <a href="#" class="dropdown-item">Login</a>
+                                <a href="#" class="dropdown-item">Register</a>
                             </div>
                         </div>
                     </div>
@@ -91,8 +91,8 @@
             <div class="row align-items-center">
                 <div class="col-md-3">
                     <div class="logo">
-                        <a href="@Url.Action("Index", "Home")" class="@isActiveController("Home", "Index", "current","")">
-                            <img src="~/Content/Template/img/Logo.png" alt="Logo">
+                        <a href="index.html">
+                            <img src="img/logo.png" alt="Logo">
                         </a>
                     </div>
                 </div>
@@ -104,11 +104,11 @@
                 </div>
                 <div class="col-md-3">
                     <div class="user">
-                        <a href="~/Content/Template/wishlist.html" class="btn wishlist">
+                        <a href="wishlist.html" class="btn wishlist">
                             <i class="fa fa-heart"></i>
                             <span>(0)</span>
                         </a>
-                        <a href="~/Content/Template/cart.html" class="btn cart">
+                        <a href="cart.html" class="btn cart">
                             <i class="fa fa-shopping-cart"></i>
                             <span>(0)</span>
                         </a>
@@ -118,8 +118,32 @@
         </div>
     </div>
     <!-- Bottom Bar End -->
+    <!-- Breadcrumb Start -->
+    <div class="breadcrumb-wrap">
+        <div class="container-fluid">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Products</a></li>
+                <li class="breadcrumb-item active">Product List</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
     @RenderBody()
-    <hr />
+    <!-- Brand Start -->
+    <div class="brand">
+        <div class="container-fluid">
+            <div class="brand-slider">
+                <div class="brand-item"><img src="img/brand-1.png" alt=""></div>
+                <div class="brand-item"><img src="img/brand-2.png" alt=""></div>
+                <div class="brand-item"><img src="img/brand-3.png" alt=""></div>
+                <div class="brand-item"><img src="img/brand-4.png" alt=""></div>
+                <div class="brand-item"><img src="img/brand-5.png" alt=""></div>
+                <div class="brand-item"><img src="img/brand-6.png" alt=""></div>
+            </div>
+        </div>
+    </div>
+    <!-- Brand End -->
     <!-- Footer Start -->
     <div class="footer">
         <div class="container-fluid">
@@ -128,9 +152,9 @@
                     <div class="footer-widget">
                         <h2>Get in Touch</h2>
                         <div class="contact-info">
-                            <p><i class="fa fa-map-marker"></i>Safira Khang Điền, 454 Võ Chí Công, P.Phú Hữu, Tp.Thủ Đức, Tp.HCM</p>
-                            <p><i class="fa fa-envelope"></i>truonggiangcontact53@gmail.com</p>
-                            <p><i class="fa fa-phone"></i>+84-36-473-5020</p>
+                            <p><i class="fa fa-map-marker"></i>123 E Store, Los Angeles, USA</p>
+                            <p><i class="fa fa-envelope"></i>email@example.com</p>
+                            <p><i class="fa fa-phone"></i>+123-456-7890</p>
                         </div>
                     </div>
                 </div>
@@ -177,15 +201,15 @@
                 <div class="col-md-6">
                     <div class="payment-method">
                         <h2>We Accept:</h2>
-                        <img src="~/Content/Template/img/payment-method.png" alt="Payment Method" />
+                        <img src="img/payment-method.png" alt="Payment Method" />
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="payment-security">
                         <h2>Secured By:</h2>
-                        <img src="~/Content/Template/img/godaddy.svg" alt="Payment Security" />
-                        <img src="~/Content/Template/img/norton.svg" alt="Payment Security" />
-                        <img src="~/Content/Template/img/ssl.svg" alt="Payment Security" />
+                        <img src="img/godaddy.svg" alt="Payment Security" />
+                        <img src="img/norton.svg" alt="Payment Security" />
+                        <img src="img/ssl.svg" alt="Payment Security" />
                     </div>
                 </div>
             </div>
@@ -197,11 +221,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 copyright">
-                    <p>Copyright &copy; Entizi Studio. All Rights Reserved</p>
+                    <p>Copyright &copy; <a href="https://htmlcodex.com">HTML Codex</a>. All Rights Reserved</p>
                 </div>
 
                 <div class="col-md-6 template-by">
-                    <p>Best Choose for you at TG STORE </p>
+                    <p>Template By <a href="https://htmlcodex.com">HTML Codex</a></p>
                 </div>
             </div>
         </div>
@@ -213,14 +237,11 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="~/Content/Template/lib/easing/easing.min.js"></script>
-    <script src="~/Content/Template/lib/slick/slick.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/slick/slick.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="~/Content/Template/js/main.js"></script>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <script src="js/main.js"></script>
 </body>
 </html>
+

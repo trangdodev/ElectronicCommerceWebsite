@@ -1,9 +1,10 @@
 /**********************************/
 /********** General CSS ***********/
 /**********************************/
+
 body {
     color: #353535;
-    font-family: 'Open Sans', sans-serif;
+    font-family: Segoe UI", Helvetica, Arial, sans-serif";
     font-weight: 400;
     background: #7395AE;
 }
@@ -21,19 +22,19 @@ a:focus {
 }
 
 h1 {
-    font-family: 'Source Code Pro', monospace;
+    font-family: Segoe UI", Helvetica, Arial, sans-serif";
     font-weight: 900;
 }
 
 h2 {
-    font-family: 'Source Code Pro', monospace;
+    font-family: Segoe UI", Helvetica, Arial, sans-serif";
+    ;
     font-weight: 700;
     margin-bottom: 50px
 }
 
-h3
-{
-    font-family: 'Soure Code Pro', monospace;
+h3 {
+    font-family: Segoe UI", Helvetica, Arial, sans-serif";
     font-weight: 700;
 }
 
@@ -494,13 +495,13 @@ h3
     z-index: 1;
 }
 
-.header-slider .header-slider-caption p {
-    text-align: center;
-    color: #ffffff;
-    font-size: 22px;
-    font-family: 'Source Code Pro', monospace;
-    font-weight: 700;
-}
+    .header-slider .header-slider-caption p {
+        text-align: center;
+        color: #ffffff;
+        font-size: 22px;
+        font-family: Segoe UI", Helvetica, Arial, sans-serif";
+        font-weight: 700;
+    }
 
 .header-slider .header-slider-caption .btn {
     border-color: #ffffff;
@@ -814,7 +815,7 @@ h3
     }
 
 .product-item .product-price {
-    padding: 20px;
+    padding: 10px;
     background: #000000;
     transition: all .3s;
 }
@@ -826,11 +827,12 @@ h3
 .product-item .product-price h3 {
     display: inline-block;
     color: #ffffff;
+    font-size: 24px;
     margin: 0;
 }
 
 .product-item .product-price h3 span {
-    font-size: 16px;
+    font-size: 12px;
 }
 
     .product-item .product-price .btn {
@@ -1659,17 +1661,17 @@ h3
     margin-bottom: 0;
 }
 
-.wishlist-page .table .thead-dark th {
-    font-family: 'Source Code Pro', monospace;
-    font-size: 18px;
-    font-weight: 700;
-    color: #353535;
-    text-align: center;
-    background: transparent;
-    border-color: #dddddd;
-    border-bottom: none;
-    vertical-align: middle;
-}
+    .wishlist-page .table .thead-dark th {
+        font-family: Segoe UI", Helvetica, Arial, sans-serif";
+        font-size: 18px;
+        font-weight: 700;
+        color: #353535;
+        text-align: center;
+        background: transparent;
+        border-color: #dddddd;
+        border-bottom: none;
+        vertical-align: middle;
+    }
 
 .wishlist-page .table td {
     font-size: 16px;
