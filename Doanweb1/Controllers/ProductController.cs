@@ -4,17 +4,21 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Doanweb1.Models;
+using PagedList;
 
 namespace Doanweb1.Controllers
 {
     public class ProductController : Controller
     {
         // GET: Product
-        public ActionResult Index()
+        public ActionResult Index(int ?page)
         {
-            var db = new ECommerceDbContext();
-            var products = db.Products.ToList();
-            return View(products);
+            var context = new ECommerceDbContext();
+            int pagesize = 5;
+            int pageIndex = page.HasValue? page.Value : 1;
+            var result = context.Products.ToList().ToPagedList(pageIndex, pagesize);
+            
+            return View(result);
         }
 
         public ActionResult ProductDetail(int id)

@@ -1,3 +1,4 @@
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
@@ -5,11 +6,16 @@ using System.Linq;
 
 namespace Doanweb1.Models
 {
-    public partial class ECommerceDbContext : DbContext
+    public partial class ECommerceDbContext : IdentityDbContext<ApplicationUser>
     {
         public ECommerceDbContext()
             : base("name=ECommerceDbContext")
         {
+        }
+
+        public static ECommerceDbContext Create()
+        {
+            return new ECommerceDbContext();
         }
 
         public virtual DbSet<Brand> Brands { get; set; }
@@ -22,6 +28,8 @@ namespace Doanweb1.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Brand>()
                 .HasMany(e => e.Products)
                 .WithRequired(e => e.Brand)
