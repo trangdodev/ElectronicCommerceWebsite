@@ -22,6 +22,7 @@
             SeedCategory(context);
             SeedBrand(context);
             SeedProduct(context);
+            SeedProductDetail(context);
 
             context.SaveChanges();
         }
@@ -295,6 +296,78 @@ box"" class=""row-info""><td style=""background-color:#f7f7f7 !important; border
                 ImageUrl = @"https://product.hstatic.net/1000026716/product/akko-hamster-x-wireless-momo-01_00252fb8f2334464bea11997c6c7f71f.jpg"
             });
 
+        }
+
+        private void SeedProductDetail(ECommerceDbContext context)
+        {
+            context.ProductDetails.AddOrUpdate(new ProductDetail()
+            {
+                ProductId = 1
+            });
+            context.ProductDetails.AddOrUpdate(new ProductDetail()
+            {
+                ProductId = 2
+            }); context.ProductDetails.AddOrUpdate(new ProductDetail()
+            {
+                ProductId = 3
+            }); context.ProductDetails.AddOrUpdate(new ProductDetail()
+            {
+                ProductId = 4
+            }); context.ProductDetails.AddOrUpdate(new ProductDetail()
+            {
+                ProductId = 5
+            }); context.ProductDetails.AddOrUpdate(new ProductDetail()
+            {
+                ProductId = 6
+            }); context.ProductDetails.AddOrUpdate(new ProductDetail()
+            {
+                ProductId = 7
+            }); context.ProductDetails.AddOrUpdate(new ProductDetail()
+            {
+                ProductId = 8
+            }); context.ProductDetails.AddOrUpdate(new ProductDetail()
+            {
+                ProductId = 9
+            }); context.ProductDetails.AddOrUpdate(new ProductDetail()
+            {
+                ProductId = 10
+            }); context.ProductDetails.AddOrUpdate(new ProductDetail()
+            {
+                ProductId = 11
+            }); context.ProductDetails.AddOrUpdate(new ProductDetail()
+            {
+                ProductId = 12
+            }); context.ProductDetails.AddOrUpdate(new ProductDetail()
+            {
+                ProductId = 13
+            }); context.ProductDetails.AddOrUpdate(new ProductDetail()
+            {
+                ProductId = 14
+            });
+            ; context.ProductDetails.AddOrUpdate(new ProductDetail()
+            {
+                ProductId = 15
+            });
+            ; context.ProductDetails.AddOrUpdate(new ProductDetail()
+            {
+                ProductId = 16
+            });
+            ; context.ProductDetails.AddOrUpdate(new ProductDetail()
+            {
+                ProductId = 17
+            });
+            ; context.ProductDetails.AddOrUpdate(new ProductDetail()
+            {
+                ProductId = 18
+            });
+            ; context.ProductDetails.AddOrUpdate(new ProductDetail()
+            {
+                ProductId = 19
+            });
+            ; context.ProductDetails.AddOrUpdate(new ProductDetail()
+            {
+                ProductId = 20
+            });
         }
 
         private void SeedBrand(ECommerceDbContext context)

@@ -44,10 +44,18 @@ namespace Doanweb1.Models
                 .HasOptional(e => e.Order)
                 .WithRequired(e => e.Delivery);
 
+            modelBuilder.Entity<Delivery>()
+                .Property(e => e.DeliveryDate)
+                .HasColumnType("datetime2");
+
             modelBuilder.Entity<Order>()
                 .HasMany(e => e.OrderDetails)
                 .WithRequired(e => e.Order)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Order>()
+                .Property(e => e.OrderDate)
+                .HasColumnType("datetime2");
 
             modelBuilder.Entity<OrderDetail>()
                 .Property(e => e.Price)
