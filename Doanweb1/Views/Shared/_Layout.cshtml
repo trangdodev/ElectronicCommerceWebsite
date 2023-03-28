@@ -54,20 +54,20 @@
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
-                        <a href="@Url.Action("Index", "Home")" class="nav-item nav-link @isActiveController("Home","Index","current","")">Home</a>
-                        <a href="@Url.Action("Index", "Product")" class="nav-item nav-link @isActiveController("Home","Index","current","")">San pham</a>
+                        <a href="@Url.Action("Index", "Home")" class="nav-item nav-link @isActiveController("Home","Index","current","")">Trang chủ</a>
+                        <a href="@Url.Action("Index", "Product")" class="nav-item nav-link @isActiveController("Home","Index","current","")">Sản phẩm</a>
                         @*<a href="~/Content/Template/product-detail.html" class="nav-item nav-link">Product Detail</a>*@
-                        <a href="~/Content/Template/cart.html" class="nav-item nav-link">Cart</a>
-                        <a href="~/Content/Template/checkout.html" class="nav-item nav-link">Checkout</a>
-                        <a href="~/Content/Template/my-account.html" class="nav-item nav-link">My Account</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
+                        <a href="#" class="nav-item nav-link">Giỏ hàng</a>
+                        <a href="#" class="nav-item nav-link">Sản phẩm yêu thích</a>
+                        @*<a href="~/Content/Template/my-account.html" class="nav-item nav-link">Tài khoản của bạn</a>*@
+                        <!--<div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Xem thêm</a>
                             <div class="dropdown-menu">
                                 <a href="~/Content/Template/wishlist.html" class="dropdown-item">Wishlist</a>
-                                <a href="~/Views/Account/Login.cshtml" class="dropdown-item">Login & Register</a>
-                                <a href="~/Content/Template/contact.html" class="dropdown-item">Contact Us</a>
-                            </div>
-                        </div>
+                                <a href="~/Views/Account/Login.cshtml" class="dropdown-item">Đăng ký/Đăng nhập</a>-->
+                                @*<a href="~/Content/Template/contact.html" class="dropdown-item">Contact Us</a>*@
+                            <!--</div>
+                        </div>-->
                     </div>
                     <div class="navbar-nav ml-auto">
                         <div class="nav-item dropdown">
@@ -98,7 +98,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="search">
-                        <input type="text" placeholder="Search">
+                        <input type="text" placeholder="Tìm kiếm sản phẩm">
                         <button><i class="fa fa-search"></i></button>
                     </div>
                 </div>
@@ -126,11 +126,11 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
-                        <h2>Get in Touch</h2>
+                        <h2>TG STORE</h2>
                         <div class="contact-info">
-                            <p><i class="fa fa-map-marker"></i>Safira Khang Điền, 454 Võ Chí Công, P.Phú Hữu, Tp.Thủ Đức, Tp.HCM</p>
-                            <p><i class="fa fa-envelope"></i>truonggiangcontact53@gmail.com</p>
-                            <p><i class="fa fa-phone"></i>+84-36-473-5020</p>
+                            <p><i class="fa fa-map-marker"></i> Địa chỉ:Safira Khang Điền, 454 Võ Chí Công, P.Phú Hữu, Tp.Thủ Đức, Tp.HCM</p>
+                            <p><i class="fa fa-envelope"></i>Email: CSKH@GEARVN.COM</p>
+                            <p><i class="fa fa-phone"></i>Hỗ trợ khách hàng: +84-36-473-5020</p>
                         </div>
                     </div>
                 </div>
@@ -140,17 +140,17 @@
                         <h2>Follow Us</h2>
                         <div class="contact-info">
                             <div class="social">
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                                <a href=""><i class="fab fa-youtube"></i></a>
+                                <a href="http://www.facebook.com/Hi.iammGin"><i class="fab fa-twitter"></i></a>
+                                <a href="http://www.facebook.com/Hi.iammGin"><i class="fab fa-facebook-f"></i></a>
+                                <a href="http://www.facebook.com/Hi.iammGin"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="http://www.facebook.com/Hi.iammGin"><i class="fab fa-instagram"></i></a>
+                                <a href="http://www.facebook.com/Hi.iammGin"><i class="fab fa-youtube"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6">
+                @*<div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
                         <h2>Company Info</h2>
                         <ul>
@@ -159,9 +159,9 @@
                             <li><a href="#">Terms & Condition</a></li>
                         </ul>
                     </div>
-                </div>
+                </div>*@
 
-                <div class="col-lg-3 col-md-6">
+                @*<div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
                         <h2>Purchase Info</h2>
                         <ul>
@@ -170,10 +170,10 @@
                             <li><a href="#">Return Policy</a></li>
                         </ul>
                     </div>
-                </div>
+                </div>*@
             </div>
 
-            <div class="row payment align-items-center">
+            @*<div class="row payment align-items-center">
                 <div class="col-md-6">
                     <div class="payment-method">
                         <h2>We Accept:</h2>
@@ -188,7 +188,7 @@
                         <img src="~/Content/Template/img/ssl.svg" alt="Payment Security" />
                     </div>
                 </div>
-            </div>
+            </div>*@
         </div>
     </div>
     <!-- Footer End -->
@@ -197,7 +197,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 copyright">
-                    <p>Copyright &copy; Entizi Studio. All Rights Reserved</p>
+                    <p>Copyright &copy; TG Store. All Rights Reserved</p>
                 </div>
 
                 <div class="col-md-6 template-by">

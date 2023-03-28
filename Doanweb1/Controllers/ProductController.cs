@@ -5,19 +5,29 @@ using System.Web;
 using System.Web.Mvc;
 using Doanweb1.Models;
 using PagedList;
+using System.Data.Entity;
 
 namespace Doanweb1.Controllers
 {
     public class ProductController : Controller
     {
         // GET: Product
-        public ActionResult Index(int ?page)
+        public ActionResult Index(int? page)
         {
             var context = new ECommerceDbContext();
-            int pagesize = 5;
-            int pageIndex = page.HasValue? page.Value : 1;
+            int pagesize = 6;
+            int pageIndex = page.HasValue ? page.Value : 1;
             var result = context.Products.ToList().ToPagedList(pageIndex, pagesize);
-            
+
+            var category = context.Categories.ToList();
+            //var brand = context.Brands.Include(x => x.Products).Select(x => new BrandWithCount()
+            //{
+            //    BrandId = x.Id,
+
+            //}).ToList();
+
+            //ViewBag.brand = brand;
+            ViewBag.Category = category;
             return View(result);
         }
 
