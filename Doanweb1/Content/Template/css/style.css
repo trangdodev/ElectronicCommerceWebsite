@@ -295,7 +295,9 @@ h3 {
 
         .nav .navbar-dark a.nav-link:hover,
         .nav .navbar-dark a.nav-link.active {
-            color: #000000;
+            color: dimgrey;
+            font-weight: bold;
+            background: #ffff;
         }
 }
 
@@ -323,7 +325,6 @@ h3 {
 /********* Bottom Bar CSS *********/
 /**********************************/
 .bottom-bar {
-    padding: 15px 0;
     background: #ffffff;
     margin-bottom: 30px;
 }
@@ -785,7 +786,7 @@ h3 {
     opacity: 1; 
 }
 
-.product-item .product-image .product-action a {
+.product-item .product-image .product-action button {
     display: inline-block;
     width: 40px;
     height: 40px;
@@ -801,15 +802,15 @@ h3 {
     margin-top: 50px;
 }
 
-.product-item:hover .product-image .product-action a {
+.product-item:hover .product-image .product-action button {
     margin-top: 0;
 }
 
-.product-item .product-image .product-action a:last-child {
+.product-item .product-image .product-action button:last-child {
     margin-right: 0;
 }
 
-    .product-item .product-image .product-action a:hover {
+    .product-item .product-image .product-action button:hover {
         color: #379683;
         background: #ffffff;
         border: 1px solid #379683;

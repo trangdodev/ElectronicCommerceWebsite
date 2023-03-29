@@ -56,10 +56,10 @@
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
-                        <a href="@Url.Action("Index", "Home")" class="nav-item nav-link @isActiveController("Home","Index","current","")">Trang chủ</a>
-                        <a href="@Url.Action("Index", "Product")" class="nav-item nav-link @isActiveController("Home","Index","current","")">Sản phẩm</a>
+                        <a href="@Url.Action("Index", "Home")" class="nav-item nav-link @isActiveController("Home","Index","active","")">Trang chủ</a>
+                        <a href="@Url.Action("Index", "Product")" class="nav-item nav-link @isActiveController("Product","Index","active","")">Sản phẩm</a>
                         @*<a href="~/Content/Template/product-detail.html" class="nav-item nav-link">Product Detail</a>*@
-                        <a href="#" class="nav-item nav-link">Giỏ hàng</a>
+                        <a href="@Url.Action("Index", "ShoppingCart")" class="nav-item nav-link @isActiveController("ShoppingCart","Index","active","")">Giỏ hàng</a>
                         <a href="#" class="nav-item nav-link">Sản phẩm yêu thích</a>
                         @*<a href="~/Content/Template/my-account.html" class="nav-item nav-link">Tài khoản của bạn</a>*@
                         <!--<div class="nav-item dropdown">
@@ -76,8 +76,8 @@
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Tài khoản</a>
                             <div class="dropdown-menu">
                                 <div class="nav-link">
-                                    <a href="@Url.Action("Login", "Account")" class="@isActiveController("Account", "Login", "curent","")" class="dropdown-item">Đăng nhập</a>
-                                    <a href="@Url.Action("Register", "Account")" class="@isActiveController("Account", "Register", "curent","")" class="dropdown-item">Đăng ký</a>
+                                    <a href="@Url.Action("Login", "Account")" class="@isActiveController("Account", "Login", "active","")" class="dropdown-item">Đăng nhập</a>
+                                    <a href="@Url.Action("Register", "Account")" class="@isActiveController("Account", "Register", "active","")" class="dropdown-item">Đăng ký</a>
                                 </div>
                             </div>
                         </div>
@@ -99,10 +99,15 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="search">
-                        <input type="text" placeholder="Tìm kiếm sản phẩm">
-                        <button><i class="fa fa-search"></i></button>
-                    </div>
+                    @if (!((controller == "product" || controller == "Product") && (action == "" || action == "Index" || action == "index")))
+                    {
+                        using (Html.BeginForm("", "Product", FormMethod.Get, new { @class = "search" }))
+                        {
+                            @Html.TextBox("productName", "", new { @placeholder = "Tìm kiếm sản phẩm" })
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        }
+                    }
+
                 </div>
                 <div class="col-md-3">
                     <div class="user">

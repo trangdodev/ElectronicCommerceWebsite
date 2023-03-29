@@ -196,9 +196,14 @@
     <Compile Include="Migrations\202303281920059_ChangeDateTimeToDateTime2.designer.cs">
       <DependentUpon>202303281920059_ChangeDateTimeToDateTime2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303291736245_remove-product-detail.cs" />
+    <Compile Include="Migrations\202303291736245_remove-product-detail.designer.cs">
+      <DependentUpon>202303291736245_remove-product-detail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Brand.cs" />
+    <Compile Include="ViewModels\AddToCardRequestViewModel.cs" />
     <Compile Include="ViewModels\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Delivery.cs" />
@@ -208,7 +213,6 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\ProductDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\BrandWithCountViewModel.cs" />
@@ -354,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303281920059_ChangeDateTimeToDateTime2.resx">
       <DependentUpon>202303281920059_ChangeDateTimeToDateTime2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303291736245_remove-product-detail.resx">
+      <DependentUpon>202303291736245_remove-product-detail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

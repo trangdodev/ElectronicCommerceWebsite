@@ -79,7 +79,20 @@ namespace Doanweb1.Controllers
         public ActionResult ProductDetail(int id)
         {
             var db = new ECommerceDbContext();
-            var products = db.Products.Include("ProductDetails").FirstOrDefault(x => x.ProductId == id);
+            var products = db.Products.FirstOrDefault(x => x.ProductId == id);
+
+            var category = db.Categories.ToList();
+
+            var brands = db.Brands.Include(x => x.Products).Select(x => new BrandWithCountViewModel()
+            {
+                BrandId = x.BrandId,
+                BrandName = x.BrandName,
+                LogoUrl = x.LogoUrl,
+                ProductCount = x.Products.Count,
+            }).ToList();
+
+            ViewBag.brand = brands;
+            ViewBag.Category = category;
             return View(products);
 
         }
