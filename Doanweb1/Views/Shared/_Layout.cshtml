@@ -44,7 +44,7 @@
                         <a href="@Url.Action("Index", "Product")" class="nav-item nav-link @isActiveController("Product","Index","active","")">Sản phẩm</a>
                         @*<a href="~/Content/Template/product-detail.html" class="nav-item nav-link">Product Detail</a>*@
                         <a href="@Url.Action("Index", "ShoppingCart")" class="nav-item nav-link @isActiveController("ShoppingCart","Index","active","")">Giỏ hàng</a>
-                        <a href="#" class="nav-item nav-link">Sản phẩm yêu thích</a>
+                        <a href="@Url.Action("Index", "WishList")" class="nav-item nav-link @isActiveController("WishList","Index","active","")">Sản phẩm yêu thích</a>
                         @*<a href="~/Content/Template/my-account.html" class="nav-item nav-link">Tài khoản của bạn</a>*@
                         <!--<div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Xem thêm</a>
@@ -85,9 +85,9 @@
                 </div>
                 <div class="col-md-3">
                     <div class="user">
-                        <a href="~/Content/Template/wishlist.html" class="btn wishlist">
+                        <a href="@Url.Action("Index", "WishList")" class="btn wishlist">
                             <i class="fa fa-heart"></i>
-                            <span>(0)</span>
+                            <span>@{Html.RenderAction("GetWishListCount", "WishList");}</span>
                         </a>
                         <a href="@Url.Action("Index", "ShoppingCart")" class="btn cart">
                             <i class="fa fa-shopping-cart"></i>
