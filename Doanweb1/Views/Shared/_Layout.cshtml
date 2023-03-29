@@ -24,6 +24,8 @@
     <!-- Template Stylesheet -->
     <link href="@Url.Content("~/Content/Template/css/style.css")" rel="stylesheet" type="text/css" />
 
+    <link href="@Url.Content("~/Content/css")" rel="stylesheet">
+
 </head>
 
 <body>
@@ -38,10 +40,10 @@
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
-                        <a href="@Url.Action("Index", "Home")" class="nav-item nav-link @isActiveController("Home","Index","current","")">Trang chủ</a>
-                        <a href="@Url.Action("Index", "Product")" class="nav-item nav-link @isActiveController("Home","Index","current","")">Sản phẩm</a>
+                        <a href="@Url.Action("Index", "Home")" class="nav-item nav-link @isActiveController("Home","Index","active","")">Trang chủ</a>
+                        <a href="@Url.Action("Index", "Product")" class="nav-item nav-link @isActiveController("Product","Index","active","")">Sản phẩm</a>
                         @*<a href="~/Content/Template/product-detail.html" class="nav-item nav-link">Product Detail</a>*@
-                        <a href="#" class="nav-item nav-link">Giỏ hàng</a>
+                        <a href="@Url.Action("Index", "ShoppingCart")" class="nav-item nav-link @isActiveController("ShoppingCart","Index","active","")">Giỏ hàng</a>
                         <a href="#" class="nav-item nav-link">Sản phẩm yêu thích</a>
                         @*<a href="~/Content/Template/my-account.html" class="nav-item nav-link">Tài khoản của bạn</a>*@
                         <!--<div class="nav-item dropdown">
@@ -49,8 +51,8 @@
                             <div class="dropdown-menu">
                                 <a href="~/Content/Template/wishlist.html" class="dropdown-item">Wishlist</a>
                                 <a href="~/Views/Account/Login.cshtml" class="dropdown-item">Đăng ký/Đăng nhập</a>-->
-                                @*<a href="~/Content/Template/contact.html" class="dropdown-item">Contact Us</a>*@
-                            <!--</div>
+                        @*<a href="~/Content/Template/contact.html" class="dropdown-item">Contact Us</a>*@
+                        <!--</div>
                         </div>-->
                     </div>
                     <div class="navbar-nav ml-auto">
@@ -78,10 +80,15 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="search">
-                        <input type="text" placeholder="Tìm kiếm sản phẩm">
-                        <button><i class="fa fa-search"></i></button>
-                    </div>
+                    @if (!((controller == "product" || controller == "Product") && (action == "" || action == "Index" || action == "index")))
+                    {
+                        using (Html.BeginForm("", "Product", FormMethod.Get, new { @class = "search" }))
+                        {
+                            @Html.TextBox("productName", "", new { @placeholder = "Tìm kiếm sản phẩm" })
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        }
+                    }
+
                 </div>
                 <div class="col-md-3">
                     <div class="user">
@@ -89,9 +96,9 @@
                             <i class="fa fa-heart"></i>
                             <span>(0)</span>
                         </a>
-                        <a href="~/Content/Template/cart.html" class="btn cart">
+                        <a href="@Url.Action("Index", "ShoppingCart")" class="btn cart">
                             <i class="fa fa-shopping-cart"></i>
-                            <span>(0)</span>
+                            <span>@{Html.RenderAction("GetCountItemInCart", "ShoppingCart");}</span>
                         </a>
                     </div>
                 </div>
@@ -109,7 +116,7 @@
                     <div class="footer-widget">
                         <h2>TG STORE</h2>
                         <div class="contact-info">
-                            <p><i class="fa fa-map-marker"></i> Địa chỉ:Safira Khang Điền, 454 Võ Chí Công, P.Phú Hữu, Tp.Thủ Đức, Tp.HCM</p>
+                            <p><i class="fa fa-map-marker"></i> Địa chỉ: Safira Khang Điền, 454 Võ Chí Công, P.Phú Hữu, Tp.Thủ Đức, Tp.HCM</p>
                             <p><i class="fa fa-envelope"></i>Email: CSKH@GEARVN.COM</p>
                             <p><i class="fa fa-phone"></i>Hỗ trợ khách hàng: +84-36-473-5020</p>
                         </div>
@@ -132,44 +139,44 @@
                 </div>
 
                 @*<div class="col-lg-3 col-md-6">
-                    <div class="footer-widget">
-                        <h2>Company Info</h2>
-                        <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms & Condition</a></li>
-                        </ul>
-                    </div>
-                </div>*@
+                        <div class="footer-widget">
+                            <h2>Company Info</h2>
+                            <ul>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Terms & Condition</a></li>
+                            </ul>
+                        </div>
+                    </div>*@
 
                 @*<div class="col-lg-3 col-md-6">
-                    <div class="footer-widget">
-                        <h2>Purchase Info</h2>
-                        <ul>
-                            <li><a href="#">Pyament Policy</a></li>
-                            <li><a href="#">Shipping Policy</a></li>
-                            <li><a href="#">Return Policy</a></li>
-                        </ul>
-                    </div>
-                </div>*@
+                        <div class="footer-widget">
+                            <h2>Purchase Info</h2>
+                            <ul>
+                                <li><a href="#">Pyament Policy</a></li>
+                                <li><a href="#">Shipping Policy</a></li>
+                                <li><a href="#">Return Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>*@
             </div>
 
             @*<div class="row payment align-items-center">
-                <div class="col-md-6">
-                    <div class="payment-method">
-                        <h2>We Accept:</h2>
-                        <img src="~/Content/Template/img/payment-method.png" alt="Payment Method" />
+                    <div class="col-md-6">
+                        <div class="payment-method">
+                            <h2>We Accept:</h2>
+                            <img src="~/Content/Template/img/payment-method.png" alt="Payment Method" />
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="payment-security">
-                        <h2>Secured By:</h2>
-                        <img src="~/Content/Template/img/godaddy.svg" alt="Payment Security" />
-                        <img src="~/Content/Template/img/norton.svg" alt="Payment Security" />
-                        <img src="~/Content/Template/img/ssl.svg" alt="Payment Security" />
+                    <div class="col-md-6">
+                        <div class="payment-security">
+                            <h2>Secured By:</h2>
+                            <img src="~/Content/Template/img/godaddy.svg" alt="Payment Security" />
+                            <img src="~/Content/Template/img/norton.svg" alt="Payment Security" />
+                            <img src="~/Content/Template/img/ssl.svg" alt="Payment Security" />
+                        </div>
                     </div>
-                </div>
-            </div>*@
+                </div>*@
         </div>
     </div>
     <!-- Footer End -->

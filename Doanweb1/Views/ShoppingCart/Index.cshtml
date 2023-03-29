@@ -1,0 +1,109 @@
+﻿@model List<Doanweb1.ViewModels.CartItemViewModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Checkout Start -->
+<div class="checkout">
+    <div class="container-fluid">
+
+        @using (Html.BeginForm("Order", "ShoppingCart", FormMethod.Post, new { @class = "row" }))
+        {
+            <div class="col-lg-8">
+                @if (Model.Count > 0)
+                {
+                    <div class="checkout-inner">
+                        <div class="checkout-summary m-0">
+                            <h1>Chi tiết giỏ hàng</h1>
+                            @foreach (var item in Model)
+                            {
+                                <div class="row">
+                                    <div class="col-md-6"><span>@item.Name</span></div>
+                                    <div class="col-md-2"><span>@string.Format("{0:0,0.}", item.Price) đ</span></div>
+                                    <div class="col-md-2"><span>@item.Quantity sản phẩm</span></div>
+                                    <div class="col-md-2" style="text-align: end"><strong>@string.Format("{0:0,0.}", item.Money) đ</strong></div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+                <div class="checkout-inner">
+                    <div class="billing-address">
+                        <h2>Thông tin nhận hàng</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Họ và tên</label>
+                                @Html.TextBox("FullName", string.Empty, new { @class = "form-control", @type = "text", @placeholder = "Họ và tên" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Số điện thoại</label>
+                                @Html.TextBox("Phone", string.Empty, new { @class = "form-control", @type = "text", @placeholder = "Số điện thoại" })
+                            </div>
+                            <div class="col-md-12">
+                                <label>Địa chỉ</label>
+                                @Html.TextBox("Address", string.Empty, new { @class = "form-control", @type = "text", @placeholder = "Địa chỉ" })
+                            </div>
+                            @if (!string.IsNullOrEmpty(@ViewBag.OrderError))
+                            {
+                                <div class="col-md-12">
+                                    <div class="alert alert-danger" role="alert">
+                                        @Html.Raw(ViewBag.OrderError)
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="checkout-inner">
+                    <div class="checkout-summary">
+                        <h1>Thông tin giỏ hàng</h1>
+                        <p class="sub-total">Tổng số lượng: <span>@ViewBag.TotalCount sản phẩm</span></p>
+                        <p class="sub-total">Thành tiền: <span>@string.Format("{0:0,0.}", @ViewBag.Total) đ</span></p>
+                        <p class="ship-cost">Phí vận chuyển: <span>25.000 đ</span></p>
+                        <h2>Tổng tiền thanh toán: <span>@string.Format("{0:0,0.}", @ViewBag.GrandTotal) đ</span></h2>
+                    </div>
+
+                    <div class="checkout-payment">
+                        <div class="payment-methods">
+                            <h1>Phương thức thanh toán</h1>
+                            <div class="payment-method">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="payment-3" value="1" name="PaymentMethod" checked>
+                                    <label class="custom-control-label" for="payment-3">Thanh toán khi nhận hàng</label>
+                                </div>
+                                <div class="payment-content" id="payment-3-show">
+                                    <p>
+                                        Quý khách sẽ thanh toán tại địa điểm nhận hàng cho nhân viên
+                                        giao nhận của TG Store hoặc đơn vị vận chuyển mà TG Store sử dụng.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="payment-method">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="payment-4" value="2" name="PaymentMethod">
+                                    <label class="custom-control-label" for="payment-4">Thanh toán Ví điện tử Momo</label>
+                                </div>
+                                <div class="payment-content" id="payment-4-show">
+                                    <p>
+                                        <strong>Bước 1:</strong>
+                                        Sau khi chọn hình thức thanh toán qua ứng dụng MOMO, hệ thống sẽ chuyển sang giao diện thanh toán của MOMO.<br />
+                                        <strong>Bước 2:</strong>
+                                        Mở ứng dụng Ví MOMO của bạn quét mã QR được cho để hoàn tất việc đặt hàng.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="checkout-btn">
+                            <button type="submit">Đặt hàng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<!-- Checkout End -->

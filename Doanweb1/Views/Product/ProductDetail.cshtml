@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "ProductDetail";
-    Layout = "~/Views/Shared/_ProductLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div>
@@ -15,9 +15,9 @@
                     <div class="product-detail-top">
                         <div class="row align-items-center">
                             <div class="col-md-5">
-                                @*<div class="product-slider-single normal-slider">
+                                <div class="product-slider-single normal-slider">
                                     <img src="@Model.ImageUrl" alt="Product Image">
-                                </div>*@
+                                </div>
                                 <div class="product-slider-single-nav normal-slider">
                                     <div class="slider-nav-img"><img src="@Model.ImageUrl" alt="Product Image"></div>
                                 </div>
@@ -33,27 +33,25 @@
                                     </div>
                                     <div class="price">
                                         <h4>Giá:</h4>
-                                        <p>@string.Format("{0:0,0.}", Model.Price)<a> đ</a> <span>@string.Format("{0:0,0.}", Model.OriginPrice)<span> đ</span></span></p>
+                                        <p>
+                                            @string.Format("{0:0,0.}", Model.Price) đ @if (Model.OriginPrice != null)
+                                            {<span>@string.Format("{0:0,0.}", Model.OriginPrice)<span> đ</span></span>}
+                                        </p>
                                     </div>
                                     <div class="quantity">
                                         <h4>Số lượng:</h4>
                                         <div class="qty">
                                             <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                            <input type="text" value="1">
+                                            <input type="text" value="1" id="txtQuantity">
                                             <button class="btn-plus"><i class="fa fa-plus"></i></button>
                                         </div>
                                     </div>
-                                    <div class="p-size">
-                                        <h4>Tùy chọn cấu hình:</h4>
-                                        <div class="btn-group btn-group-sm">
-                                            @foreach (var op in Model.ProductDetails)
-                                            {
-                                                <button type="button" class="btn">@op.Variant <span> +@string.Format("{0:0,0.}", op.VariantPrice ) đ</span></button>
-                                            }
-                                        </div>
-                                    </div>
                                     <div class="action">
-                                        <a class="btn" href="#"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                                        <button class="btn" id="btnAddToCart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</button>
+                                    </div>
+                                    <div  class="alert alert-danger mt-2" style="display: none" id="addToCardError" role="alert">
+                                        Số lượng bạn chọn và có sẳn trong giỏ hàng vượt quá số lượng tồn</br>
+                                        Vui lòng thử lại với số lượng ít hơn
                                     </div>
                                 </div>
                             </div>
@@ -133,261 +131,67 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="product">
-                        <div class="section-header">
-                            <h1>Related Products</h1>
-                        </div>
-
-                        <div class="row align-items-center product-slider product-slider-3">
-                            <div class="col-lg-3">
-                                <div class="product-item">
-                                    <div class="product-title">
-                                        <a href="#">Product Name</a>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="product-image">
-                                        <a href="product-detail.html">
-                                            <img src="img/product-8.jpg" alt="Product Image">
-                                        </a>
-                                        <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-price">
-                                        <h3><span>$</span>99</h3>
-                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="product-item">
-                                    <div class="product-title">
-                                        <a href="#">Product Name</a>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="product-image">
-                                        <a href="product-detail.html">
-                                            <img src="img/product-6.jpg" alt="Product Image">
-                                        </a>
-                                        <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-price">
-                                        <h3><span>$</span>99</h3>
-                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="product-item">
-                                    <div class="product-title">
-                                        <a href="#">Product Name</a>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="product-image">
-                                        <a href="product-detail.html">
-                                            <img src="img/product-4.jpg" alt="Product Image">
-                                        </a>
-                                        <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-price">
-                                        <h3><span>$</span>99</h3>
-                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="product-item">
-                                    <div class="product-title">
-                                        <a href="#">Product Name</a>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="product-image">
-                                        <a href="product-detail.html">
-                                            <img src="img/product-2.jpg" alt="Product Image">
-                                        </a>
-                                        <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-price">
-                                        <h3><span>$</span>99</h3>
-                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Side Bar Start -->
                 <div class="col-lg-4 sidebar">
+                    <!-- Side Bar Start -->
                     <div class="sidebar-widget category">
                         <h2 class="title">Danh mục sản phẩm</h2>
                         <nav class="navbar bg-light">
                             <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Trang chủ</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="@Url.Action("Index", "Home")"><i class="fa fa-laptop"></i>Laptop</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="@Url.Action("Index", "Home")"><i class="fa fa-keyboard"></i>Bàn phím</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="@Url.Action("Index", "Home")"><i class="fa fa-mouse-pointer"></i>Chuột</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="@Url.Action("Index", "Home")"><i class="fa fa-desktop"></i>Màn hình</a>
+                                @foreach (var item in (ViewBag.Category as List<Doanweb1.Models.Category>))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("", "product", new {category=item.CategoryId})"><i class="fa @item.Description"></i>@item.CategoryName</a>
+                                    </li>
+                                }
+
                             </ul>
                         </nav>
-                    </div>
-
-                    <div class="sidebar-widget widget-slider">
-                        <div class="sidebar-slider normal-slider">
-                            <h2 class="title">Sản phẩm liên quan</h2>
-                            <div class="product-item">
-                                <div class="product-title">
-                                    <a href="#">Product Name</a>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="product-image">
-                                    <a href="product-detail.html">
-                                        <img src="img/product-7.jpg" alt="Product Image">
-                                    </a>
-                                    <div class="product-action">
-                                        <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-price">
-                                    <h3><span>$</span>99</h3>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                </div>
-                            </div>
-                            <div class="product-item">
-                                <div class="product-title">
-                                    <a href="#">Product Name</a>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="product-image">
-                                    <a href="product-detail.html">
-                                        <img src="img/product-8.jpg" alt="Product Image">
-                                    </a>
-                                    <div class="product-action">
-                                        <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-price">
-                                    <h3><span>$</span>99</h3>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                </div>
-                            </div>
-                            <div class="product-item">
-                                <div class="product-title">
-                                    <a href="#">Product Name</a>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="product-image">
-                                    <a href="product-detail.html">
-                                        <img src="img/product-9.jpg" alt="Product Image">
-                                    </a>
-                                    <div class="product-action">
-                                        <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-price">
-                                    <h3><span>$</span>99</h3>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="sidebar-widget brands">
                         <h2 class="title">Thương hiệu</h2>
                         <ul>
-                            <li><a href="#">Apple </a><span>(45)</span></li>
-                            <li><a href="#">MSI </a><span>(34)</span></li>
-                            <li><a href="#">ROG </a><span>(67)</span></li>
-                            <li><a href="#">DareU</a><span>(74)</span></li>
-                            <li><a href="#">Logitech </a><span>(89)</span></li>
-                            <li><a href="#">AKko</a><span>(28)</span></li>
-                            <li><a href="#">Dell </a><span>(45)</span></li>
-                            <li><a href="#">Acer </a><span>(34)</span></li>
-                            <li><a href="#">Gigabyte</a><span>(67)</span></li>
-                            <li><a href="#">Tuf Gaming</a><span>(74)</span></li>
-                            <li><a href="#">Razer </a><span>(89)</span></li>
-                            <li><a href="#">Corsair</a><span>(28)</span></li>
-                            <li><a href="#">Keychron</a><span>(28)</span></li>
+                            @foreach (var item in (ViewBag.brand as List<Doanweb1.ViewModels.BrandWithCountViewModel>))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@Url.Action("", "product", new {brand=item.BrandId})">@item.BrandName</a><span>(45)</span>
+
+                                </li>
+                            }
+
                         </ul>
                     </div>
+                    <!-- Side Bar End -->
                 </div>
-                <!-- Side Bar End -->
             </div>
+            <!-- Product Detail End -->
+
         </div>
     </div>
-    <!-- Product Detail End -->
-    
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnAddToCart").click(() => {
+                $.ajax({
+                    type: "POST",
+                    url: "/ShoppingCart/AddToCart",
+                    data: { "productId": @Model.ProductId, "quantity": $("#txtQuantity").val() },
+                    success: (response) => {
+                        if (response["success"] == true) {
+                            $("#addToCardError").hide();
+                            $("#cartItemCount").text(`(${response["cartItemCount"]})`);
+                        } else {
+                            $("#addToCardError").show();
+                        }
+                    }
+                });
+            })
+        });
+    </script>
+}

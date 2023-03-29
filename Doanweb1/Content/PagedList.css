@@ -18,6 +18,7 @@
   line-height: 1.428571429;
   text-decoration: none;
   background-color: #ffffff;
+  color: grey !important;
   border: 1px solid #dddddd;
 }
 
@@ -48,7 +49,7 @@
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
   z-index: 2;
-  color: #ffffff;
+  color: #ffffff !important;
   cursor: default;
   background-color: #428bca;
   border-color: #428bca;

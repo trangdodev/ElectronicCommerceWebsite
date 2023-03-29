@@ -15,11 +15,12 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="product-view-top">
-                            <div class="row">
+                            @using (Html.BeginForm("", "Product", FormMethod.Get, new { @class = "row" }))
+                            {
                                 <div class="col-md-4">
                                     <div class="product-search">
-                                        <input type="text" placeholder="Tìm kiếm sản phẩm">
-                                        <button><i class="fa fa-search"></i></button>
+                                        @Html.TextBox("productName", ViewBag.CurrentSearch as string, new { @placeholder = "Tìm kiếm sản phẩm" })
+                                        <button type="submit"><i class="fa fa-search"></i></button>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -27,9 +28,10 @@
                                         <div class="dropdown">
                                             <div class="dropdown-toggle" data-toggle="dropdown">Sắp xếp sản phẩm theo</div>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a href="#" class="dropdown-item">Mới nhất</a>
-                                                <a href="#" class="dropdown-item">Phổ biến</a>
-                                                <a href="#" class="dropdown-item">Bán chạy</a>
+                                                <a href="@Url.Action("", "Product",new { sortOrder = "price", productName = ViewBag.CurrentSearch, priceFilter = ViewBag.CurrentFilter })" class="dropdown-item @(ViewBag.CurrentSort == "price" ? "active" : "")">Giá từ thấp đến cao</a>
+                                                <a href="@Url.Action("", "Product",new { sortOrder = "price_desc", productName = ViewBag.CurrentSearch, priceFilter = ViewBag.CurrentFilter })" class="dropdown-item @(ViewBag.CurrentSort == "price_desc" ? "active" : "")">Giá từ cao đến thấp</a>
+                                                <a href="@Url.Action("", "Product",new { sortOrder = "rating_desc", productName = ViewBag.CurrentSearch, priceFilter = ViewBag.CurrentFilter })" class="dropdown-item @(ViewBag.CurrentSort == "rating_desc" ? "active" : "")">Đánh giá tốt nhất</a>
+                                                <a href="@Url.Action("", "Product",new { sortOrder = "rating", productName = ViewBag.CurrentSearch, priceFilter = ViewBag.CurrentFilter })" class="dropdown-item @(ViewBag.CurrentSort == "rating" ? "active" : "")">Đánh giá tệ nhất</a>
                                             </div>
                                         </div>
                                     </div>
@@ -39,47 +41,20 @@
                                         <div class="dropdown">
                                             <div class="dropdown-toggle" data-toggle="dropdown">Lọc theo giá tiền</div>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a href="#" class="dropdown-item">Từ 500.000 VND - 5.000.000 VND</a>
-                                                <a href="#" class="dropdown-item">Từ 500.000.000 VND - 10.000.000 VND</a>
-                                                <a href="#" class="dropdown-item">Từ 10.000.000 VND - 50.000.000 VND</a>
-                                                <a href="#" class="dropdown-item">Từ 50.000.000 VND - 100.000.000 VND</a>
+                                                <a href="@Url.Action("", "Product",new { sortOrder = ViewBag.CurrentSort, productName = ViewBag.CurrentSearch, priceFilter = "0" })" class="dropdown-item @(ViewBag.CurrentFilter == "0" ? "active" : "")">Tất cả</a>
+                                                <a href="@Url.Action("", "Product",new { sortOrder = ViewBag.CurrentSort, productName = ViewBag.CurrentSearch, priceFilter = "1" })" class="dropdown-item @(ViewBag.CurrentFilter == "1" ? "active" : "")">Dưới 5.000.000 VND</a>
+                                                <a href="@Url.Action("", "Product",new { sortOrder = ViewBag.CurrentSort, productName = ViewBag.CurrentSearch, priceFilter = "2" })" class="dropdown-item @(ViewBag.CurrentFilter == "2" ? "active" : "")">Từ 5.000.000 VND - 10.000.000 VND</a>
+                                                <a href="@Url.Action("", "Product",new { sortOrder = ViewBag.CurrentSort, productName = ViewBag.CurrentSearch, priceFilter = "3" })" class="dropdown-item @(ViewBag.CurrentFilter == "3" ? "active" : "")">Từ 10.000.000 VND - 50.000.000 VND</a>
+                                                <a href="@Url.Action("", "Product",new { sortOrder = ViewBag.CurrentSort, productName = ViewBag.CurrentSearch, priceFilter = "4" })" class="dropdown-item @(ViewBag.CurrentFilter == "4" ? "active" : "")">Trên 50.000.000 VND</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            }
                         </div>
                     </div>
                     @foreach (var item in Model)
                     {
-                        @*<tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Brand.BrandName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ProductName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Quantity)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.OriginPrice)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Price)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Description)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
-                                </td>
-                            </tr>*@
                         <div class="col-md-4">
                             <div class="product-item">
                                 <div class="product-title">
@@ -96,14 +71,13 @@
                                         <img src="@item.ImageUrl" alt="Product Image">
                                     </a>
                                     <div class="product-action">
-                                        <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                        @*<a href="#"><i class="fa fa-search"></i></a>*@
+                                        <button class="btnAddToCartOnProduct" data-productid="@item.ProductId"><i class="fa fa-cart-plus"></i></button>
+                                        <button href="#"><i class="fa fa-heart"></i></button>
                                     </div>
                                 </div>
                                 <div class="product-price">
                                     <h3>@string.Format("{0:0,0.}", item.Price)<span> đ</span></h3>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Mua ngay</a>
+                                    <a class="btn" href="@Url.Action("AddToCart", "ShoppingCart", new { id = item.ProductId, quantity = 1 })"><i class="fa fa-shopping-cart"></i>Mua ngay</a>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +93,7 @@
                 <!-- Pagination Start -->
                 <div class="col-md-12">
                     <nav aria-label="Page navigation example" style="display: flex; justify-content: center;">
-                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, productName = ViewBag.CurrentSearch, priceFilter = ViewBag.CurrentFilter }))
                     </nav>
                 </div>
                 <!-- Pagination Start -->
@@ -133,7 +107,7 @@
                             @foreach (var item in (ViewBag.Category as List<Doanweb1.Models.Category>))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link" href="@Url.Action("", "product", new {category=item.CategoryId})"><i class="fa @item.Description"></i>@item.CategoryName</a>
+                                    <a class="nav-link" href="@Url.Action("", "product", new { categoryId = item.CategoryId, page = 1})"><i class="fa @item.Description"></i>@item.CategoryName</a>
                                 </li>
                             }
 
@@ -141,150 +115,46 @@
                     </nav>
                 </div>
 
-                @*<div class="sidebar-widget widget-slider">
-                        <div class="sidebar-slider normal-slider">
-                            <div class="product-item">
-                                <div class="product-title">
-                                    <a href="#">Product Name</a>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="product-image">
-                                    <a href="product-detail.html">
-                                        <img src="img/product-10.jpg" alt="Product Image">
-                                    </a>
-                                    <div class="product-action">
-                                        <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                        <a href="#"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-price">
-                                    <h3><span>$</span>99</h3>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                </div>
-                            </div>
-                            <div class="product-item">
-                                <div class="product-title">
-                                    <a href="#">Product Name</a>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="product-image">
-                                    <a href="product-detail.html">
-                                        <img src="img/product-9.jpg" alt="Product Image">
-                                    </a>
-                                    <div class="product-action">
-                                        <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                        <a href="#"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-price">
-                                    <h3><span>$</span>99</h3>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                </div>
-                            </div>
-                            <div class="product-item">
-                                <div class="product-title">
-                                    <a href="#">Product Name</a>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="product-image">
-                                    <a href="product-detail.html">
-                                        <img src="img/product-8.jpg" alt="Product Image">
-                                    </a>
-                                    <div class="product-action">
-                                        <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                        <a href="#"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-price">
-                                    <h3><span>$</span>99</h3>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>*@
-
                 <div class="sidebar-widget brands">
                     <h2 class="title">Thương hiệu</h2>
                     <ul>
-                        @foreach (var item in (ViewBag.brand as List<Doanweb1.Models.Brand>))
+                        @foreach (var item in (ViewBag.brand as List<Doanweb1.ViewModels.BrandWithCountViewModel>))
                         {
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("", "product", new {brand=item.BrandId})">@item.BrandName</a><span>(45)</span>
+                                <a class="nav-link" href="@Url.Action("", "product", new { brand = item.BrandName, page = 1 })">@item.BrandName</a><span>(@item.ProductCount sản phẩm)</span>
 
                             </li>
                         }
 
                     </ul>
                 </div>
-
-                @*<div class="sidebar-widget tag">
-                        <h2 class="title">Tags Cloud</h2>
-                        <a href="#">Lorem ipsum</a>
-                        <a href="#">Vivamus</a>
-                        <a href="#">Phasellus</a>
-                        <a href="#">pulvinar</a>
-                        <a href="#">Curabitur</a>
-                        <a href="#">Fusce</a>
-                        <a href="#">Sem quis</a>
-                        <a href="#">Mollis metus</a>
-                        <a href="#">Sit amet</a>
-                        <a href="#">Vel posuere</a>
-                        <a href="#">orci luctus</a>
-                        <a href="#">Nam lorem</a>
-                    </div>*@
             </div>
             <!-- Side Bar End -->
         </div>
     </div>
 </div>
-<!-- Product List End -->
-@*<table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Brand.BrandName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category.CategoryName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OriginPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
 
 
-
-    </table>*@
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".btnAddToCartOnProduct").click(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "/ShoppingCart/AddToCart",
+                    data: { "productId": $(this).data('productid'), "quantity": 1 },
+                    success: (response) => {
+                        if (response["success"] == true) {
+                            /*$("#addToCardError").hide();*/
+                            $("#cartItemCount").text(`(${response["cartItemCount"]})`);
+                        } else {
+                            /*$("#addToCardError").show();*/
+                        }
+                    }
+                });
+            })
+        });
+    </script>
+}

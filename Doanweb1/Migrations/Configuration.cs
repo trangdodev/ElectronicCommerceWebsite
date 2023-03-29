@@ -311,7 +311,6 @@ box"" class=""row-info""><td style=""background-color:#f7f7f7 !important; border
             });
 
         }
-
         private void SeedBrand(ECommerceDbContext context)
         {
             context.Brands.AddOrUpdate(new Brand()

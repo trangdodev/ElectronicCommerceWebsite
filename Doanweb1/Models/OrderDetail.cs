@@ -17,7 +17,7 @@ namespace Doanweb1.Models
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ProductDetailId { get; set; }
+        public int ProductId { get; set; }
 
         public decimal Price { get; set; }
 
@@ -25,6 +25,6 @@ namespace Doanweb1.Models
 
         public virtual Order Order { get; set; }
 
-        public virtual ProductDetail ProductDetail { get; set; }
+        public virtual Product Product { get; set; }
     }
 }
