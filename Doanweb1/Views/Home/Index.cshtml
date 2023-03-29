@@ -1,4 +1,5 @@
-﻿
+﻿@model PagedList.IPagedList<Doanweb1.Models.Product>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Trang chủ";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -40,19 +41,19 @@
                     </div>
                 </div>
 
-                <div class="col-md-3"
+                <div class="col-md-3">
                     <div class="header-img">
                         <div class="img-item">
                             <img src="~/Content/Template/img/uudai3.png" />
-                            @*<a class="img-text" href="">
+                            <a class="img-text" href="">
                                 <p style="color: #000000">Chi tiết sản phẩm</p>
-                            </a>*@
+                            </a>
                         </div>
                         <div class="img-item">
                             <img src="~/Content/Template/img/uudai4.jpg" />
-                            @*<a class="img-text" href="">
+                            <a class="img-text" href="">
                                 <p style="color: #000000">Chi tiết sản phẩm</p>
-                            </a>*@
+                            </a>
                         </div>
                     </div>
                 </div>

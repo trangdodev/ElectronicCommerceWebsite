@@ -29,22 +29,6 @@
 </head>
 
 <body>
-    <!-- Top bar Start -->
-    <!--<div class="top-bar">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-6">
-                    <i class="fa fa-envelope"></i>
-                    truonggiangcontact53@gmail.com
-                </div>
-                <div class="col-sm-6">
-                    <i class="fa fa-phone-alt"></i>
-                    +84-36-473-5020
-                </div>
-            </div>
-        </div>
-    </div>-->
-    <!-- Top bar End -->
     <!-- Nav Bar Start -->
     <div class="nav">
         <div class="container-fluid">
@@ -75,10 +59,7 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Tài khoản</a>
                             <div class="dropdown-menu">
-                                <div class="nav-link">
-                                    <a href="@Url.Action("Login", "Account")" class="@isActiveController("Account", "Login", "active","")" class="dropdown-item">Đăng nhập</a>
-                                    <a href="@Url.Action("Register", "Account")" class="@isActiveController("Account", "Register", "active","")" class="dropdown-item">Đăng ký</a>
-                                </div>
+                                @Html.Partial("_LoginPartial")
                             </div>
                         </div>
                     </div>
@@ -93,7 +74,7 @@
             <div class="row align-items-center">
                 <div class="col-md-3">
                     <div class="logo">
-                        <a href="@Url.Action("Index", "Home")" class="@isActiveController("Home", "Index", "current","")">
+                        <a href="@Url.Action("Index", "Home")">
                             <img src="~/Content/Template/img/Logo.png" alt="Logo">
                         </a>
                     </div>
