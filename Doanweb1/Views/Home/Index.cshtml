@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Trang chủ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -18,22 +18,13 @@
                 <div class="col-md-3">
                     <nav class="navbar bg-light">
                         <ul class="navbar-nav">
-                            <li style="text-align:center"><h2>Danh mục</h2></li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index", "Home")" class="@isActiveController("Home", "Index", "current","")"><i class="fa fa-home"></i>Trang chủ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index", "Home")" class="@isActiveController("Home", "Index", "current","")"><i class="fa fa-laptop"></i>Laptop</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index", "Home")" class="@isActiveController("Home", "Index", "current","")"><i class="fa fa-keyboard"></i>Bàn phím</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index", "Home")" class="@isActiveController("Home", "Index", "current","")"><i class="fa fa-mouse-pointer"></i>Chuột</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index", "Home")" class="@isActiveController("Home", "Index", "current","")"><i class="fa fa-desktop"></i>Màn hình</a>
-                            </li>
+                            <li style="text-align:center"><h5>Danh mục sản phẩm</h5></li>
+                            @foreach (var item in (ViewBag.Category as List<Doanweb1.Models.Category>))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@Url.Action("", "product", new { categoryId = item.CategoryId, page = 1})"><i class="fa @item.Description"></i>@item.CategoryName</a>
+                                </li>
+                            }
                         </ul>
                     </nav>
                 </div>
@@ -158,151 +149,42 @@
     <div class="featured-product product">
         <div class="container-fluid">
             <div class="section-header">
-                <h2>Sản phẩm nổi bật</h2>
+                <h2>Sản phẩm bán chạy nhất</h2>
             </div>
             <div class="row align-items-center product-slider product-slider-4">
-                <div class="col-lg-3">
-                    <div class="product-item">
-                        <div class="product-title">
-                            <a href="#">Laptop gaming ASUS ROG Flow Z13 GZ301VU MU301W </a>
-                            <div class="ratting">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
+                @foreach (var product in (ViewBag.BestSellProducts as List<Doanweb1.Models.Product>))
+                {
+                    <div class="col-lg-3">
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a href="#">@product.ProductName</a>
+                                <div class="ratting">
+                                    @for (int i = 1; i <= product.Rating; i++)
+                                    {
+                                        <i class="fa fa-star"></i>
+                                    }
+                                </div>
                             </div>
-                        </div>
-                        <div class="product-image">
-                            <a href="product-detail.html">
-                                <img src="https://product.hstatic.net/1000026716/product/h732__1__8e99668c1fae494093b5d261c40055bd.png" alt="Product Image">
-                            </a>
-                            <div class="product-action">
-                                <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                                @*<a href="#"><i class="fa fa-search"></i></a>*@
+                            <div class="product-image">
+                                <a href="@Url.Action("ProductDetail","Product",new {id = product.ProductId})">
+                                    <img src="@product.ImageUrl" alt="Product Image">
+                                </a>
+                                <!--<div class="product-action">
+                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="#"><i class="fa fa-heart"></i></a>-->
+                                    @*<a href="#"><i class="fa fa-search"></i></a>*@
+                                <!--</div>-->
                             </div>
-                        </div>
-                        <div class="product-price">
-                            <h3>45.099.000<span>VND</span></h3>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                            <div class="product-price">
+                                <h3>@string.Format("{0:0,0.}", product.Price) <span>đ</span></h3>
+                                <a class="btn" href="@Url.Action("AddToCart", "ShoppingCart", new { id = product.ProductId, quantity = 1 })"><i class="fa fa-shopping-cart"></i>Mua ngay</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="product-item">
-                        <div class="product-title">
-                            <a href="#">Laptop gaming MSI Crosshair 17 B12UEZ 272VN</a>
-                            <div class="ratting">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                        </div>
-                        <div class="product-image">
-                            <a href="product-detail.html">
-                                <img src="https://product.hstatic.net/1000026716/product/ee103603ac459983d61708bd1b6849_master_337ee1d9c4354809ad30fd718bf85d64_11ede530a6a84aa2b5ab14619778279b.png" alt="Product Image">
-                            </a>
-                            <div class="product-action">
-                                <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                                @*<a href="#"><i class="fa fa-search"></i></a>*@
-                            </div>
-                        </div>
-                        <div class="product-price">
-                            <h3>149.000.000<span>VND</span></h3>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="product-item">
-                        <div class="product-title">
-                            <a href="#">Laptop gaming MSI Raider GE76 12UHS 480VN</a>
-                            <div class="ratting">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                        </div>
-                        <div class="product-image">
-                            <a href="product-detail.html">
-                                <img src="https://product.hstatic.net/1000026716/product/laptop-gaming-msi-raider-ge76-12uhs-480vn-3_f4a28c54a1f34ee0a03dc517633730bd.jpg" alt="Product Image">
-                            </a>
-                            <div class="product-action">
-                                <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                                @*<a href="#"><i class="fa fa-search"></i></a>*@
-                            </div>
-                        </div>
-                        <div class="product-price">
-                            <h3>109.990.000<span>VND</span></h3>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="product-item">
-                        <div class="product-title">
-                            <a href="#">Laptop gaming Dell Alienware M15 R6 P109F001CBL</a>
-                            <div class="ratting">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                        </div>
-                        <div class="product-image">
-                            <a href="product-detail.html">
-                                <img src="https://product.hstatic.net/1000026716/product/m15-r6-p109f001cbl-i7-11800h-2_ec07ee70de8f47e498a7d9555513ea99_master_c4cd920100294a3ca311e3511f7ff9e2.png" alt="Product Image">
-                            </a>
-                            <div class="product-action">
-                                <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                                @*<a href="#"><i class="fa fa-search"></i></a>*@
-                            </div>
-                        </div>
-                        <div class="product-price">
-                            <h3>44.990.000<span>VND</span></h3>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="product-item">
-                        <div class="product-title">
-                            <a href="#">Laptop gaming ASUS ROG Flow Z13 GZ301VU MU301W </a>
-                            <div class="ratting">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                        </div>
-                        <div class="product-image">
-                            <a href="product-detail.html">
-                                <img src="https://product.hstatic.net/1000026716/product/h732__1__8e99668c1fae494093b5d261c40055bd.png" alt="Product Image">
-                            </a>
-                            <div class="product-action">
-                                <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                                @*<a href="#"><i class="fa fa-search"></i></a>*@
-                            </div>
-                        </div>
-                        <div class="product-price">
-                            <h3>45.099.000<span>VND</span></h3>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                        </div>
-                    </div>
-                </div>>
-                </div>
+                }
+
             </div>
+
         </div>
     </div>
     <!-- Featured Product End -->
