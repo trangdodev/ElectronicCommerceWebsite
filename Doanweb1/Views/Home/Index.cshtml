@@ -1,4 +1,5 @@
-﻿
+﻿@model PagedList.IPagedList<Doanweb1.Models.Product>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -20,19 +21,19 @@
                         <ul class="navbar-nav">
                             <li style="text-align:center"><h2>Danh mục</h2></li>
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index", "Home")" class="@isActiveController("Home", "Index", "current","")"><i class="fa fa-home"></i>Trang chủ</a>
+                                <a class="nav-link" href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Trang chủ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index", "Home")" class="@isActiveController("Home", "Index", "current","")"><i class="fa fa-laptop"></i>Laptop</a>
+                                <a class="nav-link" href="@Url.Action("Index", "Product", new {id = 1})"><i class="fa fa-laptop"></i>Laptop</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index", "Home")" class="@isActiveController("Home", "Index", "current","")"><i class="fa fa-keyboard"></i>Bàn phím</a>
+                                <a class="nav-link" href="@Url.Action("Index", "Product", new {id = 2})"><i class="fa fa-keyboard"></i>Bàn phím</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index", "Home")" class="@isActiveController("Home", "Index", "current","")"><i class="fa fa-mouse-pointer"></i>Chuột</a>
+                                <a class="nav-link" href="@Url.Action("Index", "Home")"><i class="fa fa-mouse-pointer"></i>Chuột</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index", "Home")" class="@isActiveController("Home", "Index", "current","")"><i class="fa fa-desktop"></i>Màn hình</a>
+                                <a class="nav-link" href="@Url.Action("Index", "Home")"><i class="fa fa-desktop"></i>Màn hình</a>
                             </li>
                         </ul>
                     </nav>
@@ -49,19 +50,19 @@
                     </div>
                 </div>
 
-                <div class="col-md-3"
+                <div class="col-md-3">
                     <div class="header-img">
                         <div class="img-item">
                             <img src="~/Content/Template/img/uudai3.png" />
-                            @*<a class="img-text" href="">
+                            <a class="img-text" href="">
                                 <p style="color: #000000">Chi tiết sản phẩm</p>
-                            </a>*@
+                            </a>
                         </div>
                         <div class="img-item">
                             <img src="~/Content/Template/img/uudai4.jpg" />
-                            @*<a class="img-text" href="">
+                            <a class="img-text" href="">
                                 <p style="color: #000000">Chi tiết sản phẩm</p>
-                            </a>*@
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -164,7 +165,7 @@
                 <div class="col-lg-3">
                     <div class="product-item">
                         <div class="product-title">
-                            <a href="#">Laptop gaming ASUS ROG Flow Z13 GZ301VU MU301W </a>
+                            <a href="#">Laptop gaming ASUS ROG Flow Z13 GZ301VU MU301W</a>
                             <div class="ratting">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -174,7 +175,7 @@
                             </div>
                         </div>
                         <div class="product-image">
-                            <a href="product-detail.html">
+                            <a href="">
                                 <img src="https://product.hstatic.net/1000026716/product/h732__1__8e99668c1fae494093b5d261c40055bd.png" alt="Product Image">
                             </a>
                             <div class="product-action">
@@ -301,7 +302,6 @@
                         </div>
                     </div>
                 </div>>
-                </div>
             </div>
         </div>
     </div>

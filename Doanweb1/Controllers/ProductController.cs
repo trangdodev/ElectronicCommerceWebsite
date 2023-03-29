@@ -20,13 +20,14 @@ namespace Doanweb1.Controllers
             var result = context.Products.ToList().ToPagedList(pageIndex, pagesize);
 
             var category = context.Categories.ToList();
+            var brand = context.Brands.ToList();
             //var brand = context.Brands.Include(x => x.Products).Select(x => new BrandWithCount()
             //{
             //    BrandId = x.Id,
 
             //}).ToList();
 
-            //ViewBag.brand = brand;
+            ViewBag.brand = brand;
             ViewBag.Category = category;
             return View(result);
         }

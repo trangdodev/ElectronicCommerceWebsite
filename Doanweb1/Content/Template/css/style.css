@@ -12,7 +12,7 @@ body {
 }
 
 a {
-    color: #ffffff;
+    color: #000000;
 }
 
 a:hover,
@@ -30,9 +30,8 @@ h1 {
 
 h2 {
     font-family: Segoe UI", Helvetica, Arial, sans-serif";
-    ;
     font-weight: 700;
-    margin-bottom: 50px
+    margin-left: 50px;
 }
 
 h3 {
@@ -265,16 +264,20 @@ h3 {
     margin-top: 0;
     border: 0;
     border-radius: 0;
-    background: #B1A296;
+    background: #5D5C61;
     text-align: center;
     min-width: 7rem;
 
 }
 
-    .nav .dropdown-menu a.active {
-        color: #353535;
-        background: #f8f9fa;
-    }
+.nav .dropdown-menu navbar-nav navbar-right{
+    color:#ffffff;
+}
+
+.nav .dropdown-menu a.active {
+    color: #353535;
+    background: #f8f9fa;
+}
 
 @media (min-width: 768px) {
     .nav,
@@ -1211,7 +1214,7 @@ h3 {
 .product-detail .nav.nav-pills .nav-link:hover,
 .product-detail .nav.nav-pills .nav-link.active {
     color: #000000;
-    background: #7395AE;
+    background: #379683;
 }
 
 .product-detail .tab-content {
