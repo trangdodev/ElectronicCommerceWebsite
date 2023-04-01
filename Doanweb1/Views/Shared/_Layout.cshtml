@@ -37,7 +37,6 @@
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
                         <a href="@Url.Action("Index", "Home")" class="nav-item nav-link @isActiveController("Home","Index","active","")">Trang chủ</a>
@@ -47,13 +46,13 @@
                         <a href="@Url.Action("Index", "WishList")" class="nav-item nav-link @isActiveController("WishList","Index","active","")">Sản phẩm yêu thích</a>
                         @*<a href="~/Content/Template/my-account.html" class="nav-item nav-link">Tài khoản của bạn</a>*@
                         <!--<div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Xem thêm</a>
-                            <div class="dropdown-menu">
-                                <a href="~/Content/Template/wishlist.html" class="dropdown-item">Wishlist</a>
-                                <a href="~/Views/Account/Login.cshtml" class="dropdown-item">Đăng ký/Đăng nhập</a>-->
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Xem thêm</a>
+                <div class="dropdown-menu">
+                    <a href="~/Content/Template/wishlist.html" class="dropdown-item">Wishlist</a>
+                    <a href="~/Views/Account/Login.cshtml" class="dropdown-item">Đăng ký/Đăng nhập</a>-->
                         @*<a href="~/Content/Template/contact.html" class="dropdown-item">Contact Us</a>*@
                         <!--</div>
-                        </div>-->
+            </div>-->
                     </div>
                     @Html.Partial("_LoginPartial")
                 </div>
@@ -61,44 +60,7 @@
         </div>
     </div>
     <!-- Nav Bar End -->
-    <!-- Bottom Bar Start -->
-    <div class="bottom-bar">
-        <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="logo">
-                        <a href="@Url.Action("Index", "Home")">
-                            <img src="~/Content/Template/img/Logo.png" alt="Logo">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    @if (!((controller == "product" || controller == "Product") && (action == "" || action == "Index" || action == "index")))
-                    {
-                        using (Html.BeginForm("", "Product", FormMethod.Get, new { @class = "search" }))
-                        {
-                            @Html.TextBox("productName", "", new { @placeholder = "Tìm kiếm sản phẩm" })
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        }
-                    }
-
-                </div>
-                <div class="col-md-3">
-                    <div class="user">
-                        <a href="@Url.Action("Index", "WishList")" class="btn wishlist">
-                            <i class="fa fa-heart"></i>
-                            <span>@{Html.RenderAction("GetWishListCount", "WishList");}</span>
-                        </a>
-                        <a href="@Url.Action("Index", "ShoppingCart")" class="btn cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            <span>@{Html.RenderAction("GetCountItemInCart", "ShoppingCart");}</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Bottom Bar End -->
+    
     @RenderBody()
     <hr />
     <!-- Footer Start -->
@@ -110,7 +72,7 @@
                         <h2>TG STORE</h2>
                         <div class="contact-info">
                             <p><i class="fa fa-map-marker"></i> Địa chỉ: Safira Khang Điền, 454 Võ Chí Công, P.Phú Hữu, Tp.Thủ Đức, Tp.HCM</p>
-                            <p><i class="fa fa-envelope"></i>Email: CSKH@GEARVN.COM</p>
+                            <p><i class="fa fa-envelope"></i>Email: TGStore.contact@gmail.com</p>
                             <p><i class="fa fa-phone"></i>Hỗ trợ khách hàng: +84-36-473-5020</p>
                         </div>
                     </div>

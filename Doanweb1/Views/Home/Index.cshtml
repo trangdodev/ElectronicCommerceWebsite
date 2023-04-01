@@ -12,6 +12,44 @@
 }
 
 <body>
+    <!-- Bottom Bar Start -->
+    <div class="bottom-bar">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <div class="logo">
+                        <a href="@Url.Action("Index", "Home")">
+                            <img src="~/Content/Template/img/Logo.png" alt="Logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    @if (!((controller == "product" || controller == "Product") && (action == "" || action == "Index" || action == "index")))
+                    {
+                        using (Html.BeginForm("", "Product", FormMethod.Get, new { @class = "search" }))
+                        {
+                            @Html.TextBox("productName", "", new { @placeholder = "Tìm kiếm sản phẩm" })
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        }
+                    }
+
+                </div>
+                <div class="col-md-3">
+                    <div class="user">
+                        <a href="@Url.Action("Index", "WishList")" class="btn wishlist">
+                            <i class="fa fa-heart"></i>
+                            <span>@{Html.RenderAction("GetWishListCount", "WishList");}</span>
+                        </a>
+                        <a href="@Url.Action("Index", "ShoppingCart")" class="btn cart">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>@{Html.RenderAction("GetCountItemInCart", "ShoppingCart");}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bottom Bar End -->
     <!-- Main Slider Start -->
     <div class="header">
         <div class="container-fluid">
@@ -173,7 +211,7 @@
                                 <!--<div class="product-action">
                                     <a href="#"><i class="fa fa-cart-plus"></i></a>
                                     <a href="#"><i class="fa fa-heart"></i></a>-->
-                                    @*<a href="#"><i class="fa fa-search"></i></a>*@
+                                @*<a href="#"><i class="fa fa-search"></i></a>*@
                                 <!--</div>-->
                             </div>
                             <div class="product-price">

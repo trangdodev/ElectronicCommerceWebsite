@@ -157,7 +157,7 @@
                             @foreach (var item in (ViewBag.brand as List<Doanweb1.ViewModels.BrandWithCountViewModel>))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link" href="@Url.Action("", "product", new {brand=item.BrandId})">@item.BrandName</a><span>(45)</span>
+                                    <a class="nav-link" href="@Url.Action("", "product", new { brand = item.BrandName, page = 1 })">@item.BrandName</a><span>(@item.ProductCount sản phẩm)</span>
 
                                 </li>
                             }
